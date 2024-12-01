@@ -47,6 +47,7 @@
             this.FiltContrTxt8 = new System.Windows.Forms.TextBox();
             this.FiltContrTxt7 = new System.Windows.Forms.TextBox();
             this.FiltContrTxt6 = new System.Windows.Forms.TextBox();
+            this.RGBTxt = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.DefaultImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProcessImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HSVBar)).BeginInit();
@@ -209,11 +210,24 @@
             this.FiltContrTxt6.Size = new System.Drawing.Size(36, 20);
             this.FiltContrTxt6.TabIndex = 17;
             // 
+            // RGBTxt
+            // 
+            this.RGBTxt.FormattingEnabled = true;
+            this.RGBTxt.Items.AddRange(new object[] {
+            "Red",
+            "Green",
+            "Blue"});
+            this.RGBTxt.Location = new System.Drawing.Point(371, 540);
+            this.RGBTxt.Name = "RGBTxt";
+            this.RGBTxt.Size = new System.Drawing.Size(121, 21);
+            this.RGBTxt.TabIndex = 20;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1313, 627);
+            this.Controls.Add(this.RGBTxt);
             this.Controls.Add(this.FiltContrTxt8);
             this.Controls.Add(this.FiltContrTxt7);
             this.Controls.Add(this.FiltContrTxt6);
@@ -262,6 +276,7 @@
         private System.Windows.Forms.TextBox FiltContrTxt8;
         private System.Windows.Forms.TextBox FiltContrTxt7;
         private System.Windows.Forms.TextBox FiltContrTxt6;
+        private System.Windows.Forms.ComboBox RGBTxt;
     }
 }
 

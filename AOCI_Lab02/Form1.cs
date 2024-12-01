@@ -77,9 +77,36 @@ namespace AOCI_Lab02
 
 
                 VectorOfMat vm = new VectorOfMat();
-                vm.Push(channel); 
-                vm.Push(channel.CopyBlank());
-                vm.Push(channel.CopyBlank());
+                
+                switch (RGBTxt.Text)
+                {
+                    case "Red":
+                        {
+                            vm.Push(channel.CopyBlank());
+                            vm.Push(channel.CopyBlank());
+                            vm.Push(channel);
+                            break;
+                        };
+                        
+                    case "Green":
+                        {
+                            vm.Push(channel.CopyBlank());
+                            vm.Push(channel);
+                            vm.Push(channel.CopyBlank());
+                            break;
+                        };
+                        
+                    case "Blue":
+                        {
+                            vm.Push(channel);
+                            vm.Push(channel.CopyBlank());
+                            vm.Push(channel.CopyBlank());
+                            break; 
+                        };
+                        
+                    default: { break; };
+                }
+
                 CvInvoke.Merge(vm, destImage);
 
 
