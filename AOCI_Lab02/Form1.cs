@@ -32,6 +32,7 @@ namespace AOCI_Lab02
             FiltContrTxt6.Text = "-1";
             FiltContrTxt7.Text = "-1";
             FiltContrTxt8.Text = "-1";
+            BrihtKontrTxt.Text = "2";
         }
 
         private Image<Bgr, byte> sourceImage; //глобальная переменная
@@ -123,19 +124,19 @@ namespace AOCI_Lab02
         private void KontrastBtn_Click(object sender, EventArgs e)
         {
             var contrastImage = sourceImage.Copy();
-            int c = 2;
+            //int c = 2;
             for (int y = 0; y < contrastImage.Height; y++)
             {
                 for (int x = 0; x < contrastImage.Width; x++)
                 {
                     for (int i = 0; i < 3; i++)
                     {
-                        if ((contrastImage.Data[y, x, i] * c) > 255)
+                        if ((contrastImage.Data[y, x, i] * Convert.ToInt32(BrihtKontrTxt.Text)) > 255)
                         {
                             contrastImage.Data[y, x, i] = 255;
                         }
                         else
-                            contrastImage.Data[y, x, i] = Convert.ToByte(contrastImage.Data[y, x, i] * c);
+                            contrastImage.Data[y, x, i] = Convert.ToByte(contrastImage.Data[y, x, i] * Convert.ToInt32(BrihtKontrTxt.Text));
 
                     }
                     //contrastImage.Data[y, x, 0] = Convert.ToByte(contrastImage.Data[y, x, 0] * c);
@@ -262,6 +263,113 @@ namespace AOCI_Lab02
             DefaultImage.Image = gray;//.Resize(640, 480, Inter.Linear);
 
             ProcessImage.Image = result;//.Resize(640, 480, Inter.Linear);
+        }
+
+        private void GrayBtn_Click(object sender, EventArgs e)
+        {
+            var grayImage = new Image<Gray, byte>(sourceImage.Size);
+
+           
+            //Image<Gray,byte> gray = sourceImage.Convert<Gray, byte>();
+            for (int y = 1; y < grayImage.Height - 1; y++)
+                for (int x = 1; x < grayImage.Width - 1; x++)
+                {
+                    grayImage.Data[y, x, 0] = Convert.ToByte(0.299 * sourceImage.Data[y, x, 2] + 0.587 * sourceImage.Data[y, x, 1] + 0.114 * sourceImage.Data[y, x, 0]);
+                }
+            ProcessImage.Image = grayImage.Resize(640, 480, Inter.Linear);
+        }
+
+        private void BrightnessBtn_Click(object sender, EventArgs e)
+        {
+            var brightnessImage = sourceImage.Copy();
+            
+
+            for (int y = 0; y < brightnessImage.Height; y++)
+            {
+                for (int x = 0; x < brightnessImage.Width; x++)
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        if ((brightnessImage.Data[y, x, i] + Convert.ToInt32(BrihtKontrTxt.Text)) > 255)
+                        {
+                            brightnessImage.Data[y, x, i] = 255;
+                        }
+                        else
+                            brightnessImage.Data[y, x, i] = Convert.ToByte(brightnessImage.Data[y, x, i] + Convert.ToInt32(BrihtKontrTxt.Text));
+
+                    }
+                    //contrastImage.Data[y, x, 0] = Convert.ToByte(contrastImage.Data[y, x, 0] * c);
+                    //contrastImage.Data[y, x, 1] = Convert.ToByte(contrastImage.Data[y, x, 1] * c);
+                    //contrastImage.Data[y, x, 2] = Convert.ToByte(contrastImage.Data[y, x, 2] * c);
+                }
+
+            }
+
+
+
+            ProcessImage.Image = brightnessImage.Resize(640, 480, Inter.Linear);
+        }
+
+        private void SepiaBtn_Click(object sender, EventArgs e)
+        {
+            var sepiaImage = sourceImage.Copy();
+
+
+            //Image<Gray,byte> gray = sourceImage.Convert<Gray, byte>();
+            for (int y = 1; y < sepiaImage.Height - 1; y++)
+                for (int x = 1; x < sepiaImage.Width - 1; x++)
+                {
+                    //if (Convert.ToByte(0.189 * sourceImage.Data[y, x, 2] + 0.769 * sourceImage.Data[y, x, 1] + 0.393 * sourceImage.Data[y, x, 0]) < 0)
+                    //{
+                    //    sepiaImage.Data[y, x, 0] = 0;
+                    //}
+                    //else if (Convert.ToByte(0.189 * sourceImage.Data[y, x, 2] + 0.769 * sourceImage.Data[y, x, 1] + 0.393 * sourceImage.Data[y, x, 0]) < 255)
+                    //{
+                    //    sepiaImage.Data[y, x, 0] = 255;
+                    //}
+                    //else
+                    //{
+                    //    sepiaImage.Data[y, x, 0] = Convert.ToByte(0.189 * sourceImage.Data[y, x, 2] + 0.769 * sourceImage.Data[y, x, 1] + 0.393 * sourceImage.Data[y, x, 0]);
+                    //}
+
+                    //if (Convert.ToByte(0.168 * sourceImage.Data[y, x, 2] + 0.686 * sourceImage.Data[y, x, 1] + 0.349 * sourceImage.Data[y, x, 0]) < 0)
+                    //{
+                    //    sepiaImage.Data[y, x, 1] = 0;
+                    //}
+                    //else if (Convert.ToByte(0.168 * sourceImage.Data[y, x, 2] + 0.686 * sourceImage.Data[y, x, 1] + 0.349 * sourceImage.Data[y, x, 0]) < 255)
+                    //{
+                    //    sepiaImage.Data[y, x, 1] = 255;
+                    //}
+                    //else
+                    //{
+                    //    sepiaImage.Data[y, x, 1] = Convert.ToByte(0.168 * sourceImage.Data[y, x, 2] + 0.686 * sourceImage.Data[y, x, 1] + 0.349 * sourceImage.Data[y, x, 0]);
+                    //}
+
+                    //if (Convert.ToByte(0.131 * sourceImage.Data[y, x, 2] + 0.534 * sourceImage.Data[y, x, 1] + 0.272 * sourceImage.Data[y, x, 0]) < 0)
+                    //{
+                    //    sepiaImage.Data[y, x, 2] = 0;
+                    //}
+                    //else if (Convert.ToByte(0.131 * sourceImage.Data[y, x, 2] + 0.534 * sourceImage.Data[y, x, 1] + 0.272 * sourceImage.Data[y, x, 0]) < 255)
+                    //{
+                    //    sepiaImage.Data[y, x, 2] = 255;
+                    //}
+                    //else
+                    //{
+                    //    sepiaImage.Data[y, x, 2] = Convert.ToByte(0.131 * sourceImage.Data[y, x, 2] + 0.534 * sourceImage.Data[y, x, 1] + 0.272 * sourceImage.Data[y, x, 0]);
+                    //}
+
+                    // Расчёт нового значения цвета для сепии
+                    double blue = 0.189 * sourceImage.Data[y, x, 2] + 0.769 * sourceImage.Data[y, x, 1] + 0.393 * sourceImage.Data[y, x, 0];
+                    double green = 0.168 * sourceImage.Data[y, x, 2] + 0.686 * sourceImage.Data[y, x, 1] + 0.349 * sourceImage.Data[y, x, 0];
+                    double red = 0.131 * sourceImage.Data[y, x, 2] + 0.534 * sourceImage.Data[y, x, 1] + 0.272 * sourceImage.Data[y, x, 0];
+
+                    // Ограничиваем значения в диапазоне от 0 до 255
+                    sepiaImage.Data[y, x, 0] = (byte)(blue < 0 ? 0 : (blue > 255 ? 255 : blue));
+                    sepiaImage.Data[y, x, 1] = (byte)(green < 0 ? 0 : (green > 255 ? 255 : green));
+                    sepiaImage.Data[y, x, 2] = (byte)(red < 0 ? 0 : (red > 255 ? 255 : red));
+
+                }
+            ProcessImage.Image = sepiaImage.Resize(640, 480, Inter.Linear);
         }
     }
 }

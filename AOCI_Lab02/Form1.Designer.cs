@@ -48,6 +48,11 @@
             this.FiltContrTxt7 = new System.Windows.Forms.TextBox();
             this.FiltContrTxt6 = new System.Windows.Forms.TextBox();
             this.RGBTxt = new System.Windows.Forms.ComboBox();
+            this.GrayBtn = new System.Windows.Forms.Button();
+            this.SepiaBtn = new System.Windows.Forms.Button();
+            this.BrightnessBtn = new System.Windows.Forms.Button();
+            this.BrihtKontrTxt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DefaultImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProcessImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HSVBar)).BeginInit();
@@ -219,14 +224,66 @@
             "Blue"});
             this.RGBTxt.Location = new System.Drawing.Point(371, 540);
             this.RGBTxt.Name = "RGBTxt";
-            this.RGBTxt.Size = new System.Drawing.Size(121, 21);
+            this.RGBTxt.Size = new System.Drawing.Size(72, 21);
             this.RGBTxt.TabIndex = 20;
+            // 
+            // GrayBtn
+            // 
+            this.GrayBtn.Location = new System.Drawing.Point(12, 538);
+            this.GrayBtn.Name = "GrayBtn";
+            this.GrayBtn.Size = new System.Drawing.Size(75, 23);
+            this.GrayBtn.TabIndex = 21;
+            this.GrayBtn.Text = "Gray";
+            this.GrayBtn.UseVisualStyleBackColor = true;
+            this.GrayBtn.Click += new System.EventHandler(this.GrayBtn_Click);
+            // 
+            // SepiaBtn
+            // 
+            this.SepiaBtn.Location = new System.Drawing.Point(93, 538);
+            this.SepiaBtn.Name = "SepiaBtn";
+            this.SepiaBtn.Size = new System.Drawing.Size(75, 23);
+            this.SepiaBtn.TabIndex = 22;
+            this.SepiaBtn.Text = "Sepia";
+            this.SepiaBtn.UseVisualStyleBackColor = true;
+            this.SepiaBtn.Click += new System.EventHandler(this.SepiaBtn_Click);
+            // 
+            // BrightnessBtn
+            // 
+            this.BrightnessBtn.Location = new System.Drawing.Point(174, 577);
+            this.BrightnessBtn.Name = "BrightnessBtn";
+            this.BrightnessBtn.Size = new System.Drawing.Size(75, 23);
+            this.BrightnessBtn.TabIndex = 23;
+            this.BrightnessBtn.Text = "Brightness";
+            this.BrightnessBtn.UseVisualStyleBackColor = true;
+            this.BrightnessBtn.Click += new System.EventHandler(this.BrightnessBtn_Click);
+            // 
+            // BrihtKontrTxt
+            // 
+            this.BrihtKontrTxt.Location = new System.Drawing.Point(449, 579);
+            this.BrihtKontrTxt.MaxLength = 3;
+            this.BrihtKontrTxt.Name = "BrihtKontrTxt";
+            this.BrihtKontrTxt.Size = new System.Drawing.Size(36, 20);
+            this.BrihtKontrTxt.TabIndex = 24;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(334, 582);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(109, 13);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "Контраст и Яркость";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1313, 627);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.BrihtKontrTxt);
+            this.Controls.Add(this.BrightnessBtn);
+            this.Controls.Add(this.SepiaBtn);
+            this.Controls.Add(this.GrayBtn);
             this.Controls.Add(this.RGBTxt);
             this.Controls.Add(this.FiltContrTxt8);
             this.Controls.Add(this.FiltContrTxt7);
@@ -277,6 +334,11 @@
         private System.Windows.Forms.TextBox FiltContrTxt7;
         private System.Windows.Forms.TextBox FiltContrTxt6;
         private System.Windows.Forms.ComboBox RGBTxt;
+        private System.Windows.Forms.Button GrayBtn;
+        private System.Windows.Forms.Button SepiaBtn;
+        private System.Windows.Forms.Button BrightnessBtn;
+        private System.Windows.Forms.TextBox BrihtKontrTxt;
+        private System.Windows.Forms.Label label1;
     }
 }
 
