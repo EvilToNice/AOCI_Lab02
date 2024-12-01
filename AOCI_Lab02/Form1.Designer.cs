@@ -53,6 +53,8 @@
             this.BrightnessBtn = new System.Windows.Forms.Button();
             this.BrihtKontrTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.AkvaBtn = new System.Windows.Forms.Button();
+            this.CartoonBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DefaultImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProcessImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HSVBar)).BeginInit();
@@ -274,11 +276,31 @@
             this.label1.TabIndex = 25;
             this.label1.Text = "Контраст и Яркость";
             // 
+            // AkvaBtn
+            // 
+            this.AkvaBtn.Location = new System.Drawing.Point(12, 576);
+            this.AkvaBtn.Name = "AkvaBtn";
+            this.AkvaBtn.Size = new System.Drawing.Size(75, 23);
+            this.AkvaBtn.TabIndex = 26;
+            this.AkvaBtn.Text = "Акварельный";
+            this.AkvaBtn.UseVisualStyleBackColor = true;
+            // 
+            // CartoonBtn
+            // 
+            this.CartoonBtn.Location = new System.Drawing.Point(93, 577);
+            this.CartoonBtn.Name = "CartoonBtn";
+            this.CartoonBtn.Size = new System.Drawing.Size(75, 23);
+            this.CartoonBtn.TabIndex = 27;
+            this.CartoonBtn.Text = "Cartoon";
+            this.CartoonBtn.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1313, 627);
+            this.Controls.Add(this.CartoonBtn);
+            this.Controls.Add(this.AkvaBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BrihtKontrTxt);
             this.Controls.Add(this.BrightnessBtn);
@@ -339,6 +361,8 @@
         private System.Windows.Forms.Button BrightnessBtn;
         private System.Windows.Forms.TextBox BrihtKontrTxt;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button AkvaBtn;
+        private System.Windows.Forms.Button CartoonBtn;
     }
 }
 
