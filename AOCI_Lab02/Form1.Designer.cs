@@ -284,6 +284,7 @@
             this.AkvaBtn.TabIndex = 26;
             this.AkvaBtn.Text = "Акварельный";
             this.AkvaBtn.UseVisualStyleBackColor = true;
+            this.AkvaBtn.Click += new System.EventHandler(this.AkvaBtn_Click);
             // 
             // CartoonBtn
             // 
@@ -293,6 +294,7 @@
             this.CartoonBtn.TabIndex = 27;
             this.CartoonBtn.Text = "Cartoon";
             this.CartoonBtn.UseVisualStyleBackColor = true;
+            this.CartoonBtn.Click += new System.EventHandler(this.CartoonBtn_Click);
             // 
             // Form1
             // 

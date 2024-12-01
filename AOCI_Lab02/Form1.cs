@@ -15,6 +15,8 @@ using System.Text.RegularExpressions;
 
 using Emgu.CV.UI;
 using Emgu.CV.Util;
+using Emgu.CV.Ocl;
+using System.Drawing.Imaging;
 
 namespace AOCI_Lab02
 {
@@ -360,6 +362,74 @@ namespace AOCI_Lab02
 
                 }
             ProcessImage.Image = sepiaImage.Resize(640, 480, Inter.Linear);
+        }
+
+        private void AkvaBtn_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Файлы изображений (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+            var resultOp = openFileDialog.ShowDialog(); // открытие диалога выбора файла
+            Image<Bgr, byte> imageMask;
+            if (resultOp == DialogResult.OK) // открытие выбранного файла
+            {
+                string fileName = openFileDialog.FileName;
+                imageMask = new Image<Bgr, byte>(fileName).Resize(640, 480, Inter.Linear);
+
+                var DefIm = sourceImage.Copy();
+
+                var contrastEnhanced = new Image<Bgr, byte>(DefIm.Size);
+                CvInvoke.ConvertScaleAbs(sourceImage, contrastEnhanced, 1.2, 20);
+
+                var blurredImage = contrastEnhanced.SmoothGaussian(15);
+
+                var watercolorImage = blurredImage.AddWeighted(imageMask, 0.7, 0.3, 0);
+
+                DefaultImage.Image = blurredImage;//.Resize(640, 480, Inter.Linear);
+
+                ProcessImage.Image = watercolorImage;//.Resize(640, 480, Inter.Linear);
+            }
+        }
+
+        private void CartoonBtn_Click(object sender, EventArgs e)
+        {
+            Image<Bgr, byte> Cartoon = sourceImage.Copy();
+
+            // Шаг 2: Применение размытия для сглаживания деталей
+            var blurredImage = sourceImage.SmoothGaussian(15);
+
+            // Шаг 3: Преобразование в оттенки серого
+            var grayImage = blurredImage.Convert<Gray, byte>();
+
+
+            var edges = blurredImage.Canny(50, 150);
+
+            var thickEdges = edges.Dilate(1);
+
+            var invertedEdges = thickEdges.Not();
+
+            var cartoonMask = invertedEdges.Convert<Bgr, byte>();
+
+            var resultImage = Cartoon.Copy();
+
+            var scale = 256 / 7;
+
+            for (int y = 0; y < Cartoon.Height; y++)
+            {
+                for (int x = 0; x < Cartoon.Width; x++)
+                {
+                    var color = Cartoon[y, x];
+
+                    // Квантизация каждого канала
+                    byte blue = (byte)(color.Blue / scale * scale);
+                    byte green = (byte)(color.Green / scale * scale);
+                    byte red = (byte)(color.Red / scale * scale);
+
+                    resultImage[y, x] = new Bgr(blue, green, red);
+                }
+            }
+
+            ProcessImage.Image = resultImage.And(cartoonMask);
         }
     }
 }
