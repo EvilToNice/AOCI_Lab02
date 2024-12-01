@@ -178,7 +178,7 @@ namespace AOCI_Lab02
                     {
                         for (int j = -1; j < 2; j++)
                         { 
-                            l.Add(gray.Data[i+x, j+y, 0]);
+                            l.Add(gray.Data[i+y, j+x, 0]);
                         }
                     }
 
